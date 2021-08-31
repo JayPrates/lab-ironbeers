@@ -1,0 +1,46 @@
+<div class="row">
+    {{#each beers}}
+        <div class="col-md-4">
+            {{> card}}
+        </div>
+            <p>Food pairing:</p>
+            <ol>
+                {{#each food_pairing}}
+                <li>
+                    {{this}}
+                </li>
+                {{/each}}
+            </ol>
+            <h3>Brewers Tips:</h3>
+            <p>
+                {{brewers_tips}}
+            </p>
+    {{/each}}
+</div>
+
+
+<div class="row">
+    {{#each beer}}
+        <div class="col-md-2" align='center'>
+            <image src="{{image_url}}" height="250px"> </image>
+        </div>
+        <div class="col-md-8">
+            <h2>{{name}}</h2>
+            <p>{{description}}</p>
+            <p>Food pairing:</p>
+            <ol>
+                {{#each food_pairing}}
+                <li>
+                    {{this}}
+                </li>
+                {{/each}}
+            </ol>
+            <h3>Brewers Tips:</h3>
+            <p>
+                {{brewers_tips}}
+            </p>
+        </div>
+        <div clas="col-md-2">
+        </div>
+    {{/each}}
+</div>

@@ -1,3 +1,4 @@
+const { response } = require('express');
 const express = require('express');
 
 const hbs = require('hbs');
@@ -11,6 +12,7 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
+hbs.registerPartials(__dirname + '/views/partials');
 
 // Register the location for handlebars partials here:
 
@@ -19,7 +21,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Add the route handlers here:
 
 app.get('/', (req, res) => {
-  res.render('index');
+  res.render('index')
+});
+
+app.get('/beers', (req, res) => {
+      //Promises
+  //Promises are Javascript objects that might have not not a value in the near future
+  punkAPI.getBeers().then(beers => {
+    console.log(beers);
+    res.render('beers', {beers: beers})
+  /*}).catch(error=> {
+    console.log(error);
+  });*/
+  });
+});
+
+app.get('/random-beer', (req, res) => {
+  punkAPI.getRandom().then(beer => {
+    res.render('random-beer', {beer});
+  })
 });
 
 app.listen(3000, () => console.log('🏃‍ on port 3000'));
